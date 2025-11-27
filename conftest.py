@@ -2,6 +2,7 @@
 import pytest
 import allure
 from playwright.sync_api import sync_playwright
+from constants.credentials import LoginConfig  
 
 @pytest.fixture(scope="session")
 def browser():
@@ -14,21 +15,25 @@ def browser():
 def page(browser):
     context = browser.new_context()
     page = context.new_page()
+
+    page.console_messages = []
+    page.network_events = []
+
+    page.on("console", lambda msg: page.console_messages.append(f"[{msg.type}] {msg.text}"))
+    page.on("request", lambda req: page.network_events.append(f"➡️ {req.method} {req.url}"))
+    page.on("response", lambda res: page.network_events.append(f"⬅️ {res.status} {res.url}"))
+
     yield page
     context.close()
 
-def attach_network_logs(page, test_name):
-    requests = []
-    page.on("request", lambda req: requests.append(f"➡️ {req.method} {req.url}"))
-    page.on("response", lambda res: requests.append(f"⬅️ {res.status} {res.url}"))
+@pytest.fixture
+def valid_credentials():
+    return LoginConfig.get_user("valid_credentials")
 
-    if requests:
-        allure.attach(
-            "\n".join(requests),
-            name=f"{test_name}_network",
-            attachment_type=allure.attachment_type.TEXT
-        )
-        
+@pytest.fixture
+def invalid_credentials():
+    return LoginConfig.get_user("invalid_credentials")
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -37,7 +42,6 @@ def pytest_runtest_makereport(item, call):
     if result.when == "call" and result.failed:
         page = item.funcargs.get("page", None)
         if page:
-            # Screenshot
             screenshot = page.screenshot(full_page=True)
             allure.attach(
                 screenshot,
@@ -45,15 +49,16 @@ def pytest_runtest_makereport(item, call):
                 attachment_type=allure.attachment_type.PNG
             )
 
-            # Console logs
-            logs = []
-            page.on("console", lambda msg: logs.append(f"[{msg.type}] {msg.text}"))
-            if logs:
+            if page.console_messages:
                 allure.attach(
-                    "\n".join(logs),
-                    name=f"{item.name}_console_logs",
+                    "\n".join(page.console_messages),
+                    name=f"{item.name}_console",
                     attachment_type=allure.attachment_type.TEXT
                 )
 
-            # Network logs
-            attach_network_logs(page, item.name)
+            if page.network_events:
+                allure.attach(
+                    "\n".join(page.network_events),
+                    name=f"{item.name}_network",
+                    attachment_type=allure.attachment_type.TEXT
+                )
