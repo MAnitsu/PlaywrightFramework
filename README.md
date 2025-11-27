@@ -149,9 +149,9 @@ echo "Hello World" > testfile.txt
 ✅ Generate HTML test reports (e.g. pytest-html)
 
 ### To do
-✅ Use pytest parametrize to test multiple inputs
+✅ Use pytest parametrise to test multiple inputs
 
-✅ Add tests for more pages on the-internet.herokuapp.com
+✅ Add API tests
 
 ✅ Integrate with GitHub Actions for Continuous Integration
 
