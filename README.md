@@ -1,6 +1,6 @@
 # UI Test Automation with Python & Playwright
 
-This project automates UI tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/) using Python, pytest, and Playwright.  
+This project automates UI tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/) using Python, pytest, and Playwright. It contains report generation using Allure and will later have API tests added.
 
 ---
 
