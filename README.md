@@ -51,7 +51,7 @@ The virtual environment is not included in the repository. Each user should gene
 # Windows:
 python -m venv venv
 venv\Scripts\activate # activates environment
-deactivate # deactivates environment after running tests
+deactivate # !!deactivate environment after installing dependencies and running tests
 
 # macOS/Linux:
 python3 -m venv venv
