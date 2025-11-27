@@ -2,6 +2,8 @@
 
 This project automates UI tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/) using Python, pytest, and Playwright. It contains report generation using Allure and will later have API tests added.
 
+Allure report showcase: https://manitsu.github.io/PlaywrightFramework/#
+
 ---
 
 ## 📂 Project Structure
@@ -51,7 +53,7 @@ The virtual environment is not included in the repository. Each user should gene
 # Windows:
 python -m venv venv
 venv\Scripts\activate # activates environment
-deactivate # deactivates environment after running tests
+deactivate # !!deactivate environment after installing dependencies and running tests
 
 # macOS/Linux:
 python3 -m venv venv
