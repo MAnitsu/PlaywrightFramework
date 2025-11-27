@@ -184,4 +184,5 @@ deactivate
 ## 👨‍💻 Author
 MAnitsu
 
-GitHub Profile: https://github.com/MAnitsu
+GitHub: https://github.com/MAnitsu
+LinkedIn: https://www.linkedin.com/in/mihai-alexandru-nitu-b8035a16a/
