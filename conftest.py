@@ -2,6 +2,7 @@
 import pytest
 import allure
 from playwright.sync_api import sync_playwright
+from constants.credentials import USERS
 
 @pytest.fixture(scope="session")
 def browser():
@@ -24,6 +25,14 @@ def page(browser):
 
     yield page
     context.close()
+
+@pytest.fixture
+def valid_credentials():
+    return USERS["valid_credentials"]
+
+@pytest.fixture
+def invalid_credentials():
+    return USERS["invalid_credentials"]
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
