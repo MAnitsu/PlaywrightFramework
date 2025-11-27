@@ -152,7 +152,7 @@ echo "Hello World" > testfile.txt
 ### Done
 ✅ Implement the Page Object Model (POM)
 
-✅ Generate HTML test reports (e.g. pytest-html)
+✅ Generate HTML test reports (Allure)
 
 ### To do
 ✅ Use pytest parametrise to test multiple inputs
