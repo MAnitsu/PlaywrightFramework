@@ -7,7 +7,11 @@ Allure report showcase: https://manitsu.github.io/PlaywrightFramework/#
 ---
 
 ## 📂 Project Structure
-PlaywrightUITest/
+PlaywrightFramework/
+
+├─ constants/
+
+│   └─ credentials.py
 
 ├── pages/
 
@@ -184,4 +188,6 @@ deactivate
 ## 👨‍💻 Author
 MAnitsu
 
-GitHub Profile: https://github.com/MAnitsu
+GitHub: https://github.com/MAnitsu
+
+LinkedIn: https://www.linkedin.com/in/mihai-alexandru-nitu-b8035a16a/
