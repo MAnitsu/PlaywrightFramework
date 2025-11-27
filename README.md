@@ -186,7 +186,7 @@ deactivate
 ```
 
 ## 👨‍💻 Author
-MAnitsu
+Mihai A. Nițu
 
 GitHub: https://github.com/MAnitsu
 
