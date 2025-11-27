@@ -5,18 +5,22 @@ from playwright.sync_api import Page
 class LoginPage:
     def __init__(self, page: Page):
         self.page = page
-        self.username_input = page.locator('#username')
-        self.password_input = page.locator('#password')
-        self.login_button = page.locator('button[type="submit"]')
-        self.flash_message = page.locator('#flash')
+        self.username = page.locator("#username")
+        self.password = page.locator("#password")
+        self.login_button = page.locator("button[type='submit']")
+        self.flash_success = page.locator("#flash.success")
+        self.flash_error = page.locator("#flash.error")
 
     def navigate(self):
         self.page.goto("https://the-internet.herokuapp.com/login")
 
-    def login(self, username: str, password: str):
-        self.username_input.fill(username)
-        self.password_input.fill(password)
+    def login(self, user: str, pwd: str):
+        self.username.fill(user)
+        self.password.fill(pwd)
         self.login_button.click()
 
-    def get_flash_text(self):
-        return self.flash_message.text_content()
+    def success_message_visible(self) -> bool:
+        return self.flash_success.is_visible()
+
+    def error_message_visible(self) -> bool:
+        return self.flash_error.is_visible()

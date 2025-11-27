@@ -15,3 +15,7 @@ test-results/
 
 # VS Code settings (optional)
 .vscode/
+
+# Allure reports
+reports/allure-results/
+reports/allure-report/

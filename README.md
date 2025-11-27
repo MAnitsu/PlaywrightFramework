@@ -89,6 +89,11 @@ Run tests and generate an easy to read report
 ```bash
 pip install pytest-html
 pytest --html=report.html --self-contained-html # to run the tests and generate the report
+# Run tests with Allure Report
+```bash
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
+
 ```
 
 ## 📄 How to Create New Tests
