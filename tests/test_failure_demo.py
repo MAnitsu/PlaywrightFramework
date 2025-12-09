@@ -1,5 +1,5 @@
 # tests/test_failure_demo.py
-import pytest
+
 import allure
 
 @allure.title("Intentional Failure Demo")
